@@ -309,7 +309,7 @@ fn enum_dcl(pair: IdlPair, writer: &mut String) {
         .clone()
         .find(|p| p.as_rule() == Rule::identifier)
         .expect("Must have an identifier according to the grammar");
-    writer.push_str("#[derive(Debug)]\n");
+    writer.push_str("#[derive(Debug, dust_dds::topic_definition::type_support::DdsType)]\n");
     writer.push_str("pub enum ");
     generate_rust_source(identifier, writer);
     writer.push('{');
